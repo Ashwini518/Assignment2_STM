@@ -10,33 +10,45 @@ using System.Threading.Tasks;
 
 namespace Assignment2
 {
-    public static class TriangleSolver
+    class Program
     {
-        public static string Analyze(int a, int b, int c)
+        static void Main(String[] args)
         {
-            string result = string.Empty;
-            if (a + b > c && b + c > a && c + a > b)
+            string givenInput = "";
+            bool validMenu = false;
+            string d = string.Empty;
+            while (validMenu == false)
             {
-                Console.WriteLine("Given inputs form a triangle.");
+                Console.WriteLine("1=Enter Triangle dimensions");
+                Console.WriteLine("2 = Exit \n");
 
-                if (a == b && b == c && c==a)
+                Console.WriteLine("Please select an option, by entering a number:\n");
+                givenInput = Console.ReadLine();
+                if (givenInput != "1" &&
+                    givenInput != "2")
                 {
-                    result = "Triangle is Equilateral.";
+                    Console.WriteLine("That's not a valid menu option, please try again:\n");
                 }
-                else if (a == b || b == c || c == a)
+                else if (givenInput == "1")
                 {
-                    result = "Triangle is Isosceles.";
+                    Console.WriteLine("Enter three sides of traingle :");
+                    Console.WriteLine("Enter First side of triangle : ");
+                    int a = int.Parse(Console.ReadLine());
+                    Console.WriteLine("Enter Second Side of traingle : ");
+                    int b = int.Parse(Console.ReadLine());
+                    Console.WriteLine("Enter Third Side of traingle : ");
+                    int c = int.Parse(Console.ReadLine());
+                    d = TriangleSolver.Analyze(a, b, c);
+                    Console.WriteLine("{0}", d);
                 }
                 else
                 {
-                    result = "Triangle is Scalene.";
+                    validMenu = true;
+                    break;
+
                 }
+
             }
-            else
-            {
-                 result= "Given inputs doesnot form a triangle.";
-            }
-            return result;
         }
     }
 }
